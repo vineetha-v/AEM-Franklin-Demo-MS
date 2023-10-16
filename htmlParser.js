@@ -1,21 +1,22 @@
 // const parser = require('node-html-parser');
+const artParser = require('@extractus/article-extractor');
 
-// const artParser = require('@extractus/article-extractor');
-import { writeFileSync, readFile } from 'fs';
-// const fs = require('fs');
-import { extract } from '@extractus/article-extractor';
+// import { writeFileSync, readFile } from 'fs';
+const fs = require('fs');
+
+// import { extract } from '@extractus/article-extractor';
 // const html = fs.readFileSync(__dirname + '/data/index.html', 'utf-8');
 
-const result = await extract('https://main--ossmobiledemo--vineetha-v.hlx.page');
+const result = await artParser.extract('https://main--ossmobiledemo--vineetha-v.hlx.page');
 
-writeFileSync('websitedata.json', JSON.stringify(result, null, 2),
+fs.writeFileSync('websitedata.json', JSON.stringify(result, null, 2),
     function (err) {
         if (err) throw err;
         console.log('successfully saved file')
     }
 );
 
-readFile('websitedata.json', 'utf-8', function (err, data) {
+fs.readFile('websitedata.json', 'utf-8', function (err, data) {
     if (err) throw err;
 
     var obj = JSON.parse(data);
