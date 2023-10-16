@@ -6,20 +6,18 @@ const fs = require('fs');
 
 // import { extract } from '@extractus/article-extractor';
 // const html = fs.readFileSync(__dirname + '/data/index.html', 'utf-8');
+async function extract() {
+  const result = await artParser.extract('https://main--ossmobiledemo--vineetha-v.hlx.page');
 
-const result = await artParser.extract('https://main--ossmobiledemo--vineetha-v.hlx.page');
+  fs.writeFileSync('websitedata.json', JSON.stringify(result, null, 2), (err) => {
+    if (err) throw err;
+    console.log('successfully saved file');
+  });
 
-fs.writeFileSync('websitedata.json', JSON.stringify(result, null, 2),
-    function (err) {
-        if (err) throw err;
-        console.log('successfully saved file')
-    }
-);
-
-fs.readFile('websitedata.json', 'utf-8', function (err, data) {
+  fs.readFile('websitedata.json', 'utf-8', (err, data) => {
     if (err) throw err;
 
-    var obj = JSON.parse(data);
+    const obj = JSON.parse(data);
 
     console.log(obj.title);
     console.log(obj.url);
@@ -27,7 +25,10 @@ fs.readFile('websitedata.json', 'utf-8', function (err, data) {
     console.log(obj.links[0]);
     console.log(obj.image);
     // console.log(obj.content);
-});
+  });
+}
+
+extract();
 
 // console.log(result);
 
