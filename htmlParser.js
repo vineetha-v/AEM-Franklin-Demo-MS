@@ -1,20 +1,24 @@
 // const parser = require('node-html-parser');
-const artParser = require('@extractus/article-extractor');
 
-// import { writeFileSync, readFile } from 'fs';
-const fs = require('fs');
-
-// import { extract } from '@extractus/article-extractor';
+// const artParser = require('@extractus/article-extractor');
+import { writeFileSync, readFile } from 'fs';
+// const fs = require('fs');
+import { extract } from '@extractus/article-extractor';
 // const html = fs.readFileSync(__dirname + '/data/index.html', 'utf-8');
-async function extract() {
-  const result = await artParser.extract('https://main--ossmobiledemo--vineetha-v.hlx.page');
 
-  fs.writeFileSync('websitedata.json', JSON.stringify(result, null, 2), (err) => {
-    if (err) throw err;
-    console.log('successfully saved file');
-  });
+async function extractFunc() {
+  const result = await extract('https://main--ossmobiledemo--vineetha-v.hlx.page');
 
-  fs.readFile('websitedata.json', 'utf-8', (err, data) => {
+  writeFileSync(
+    'websitedata.json',
+    JSON.stringify(result, null, 2),
+    (err) => {
+      if (err) throw err;
+      console.log('successfully saved file');
+    },
+  );
+
+  readFile('websitedata.json', 'utf-8', (err, data) => {
     if (err) throw err;
 
     const obj = JSON.parse(data);
@@ -28,8 +32,7 @@ async function extract() {
   });
 }
 
-extract();
-
+extractFunc();
 // console.log(result);
 
 // const root = parser.parse(html);
