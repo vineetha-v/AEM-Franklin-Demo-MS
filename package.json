@@ -39,6 +39,7 @@
     "stylelint-config-standard": "30.0.1"
   },
   "dependencies": {
-    "@extractus/article-extractor": "^8.0.3"
+    "@extractus/article-extractor": "^8.0.3",
+    "website-scraper": "^5.3.1"
   }
 }
