@@ -13,13 +13,18 @@ jobs:
         with:
           node-version: "16.x"
       - run: npm install
-      - run: node htmlParser.js
-      - uses: actions/upload-artifact@v3
-        with:
-          name: main content json
-          path: websitedata.json
+      # - run: node htmlParser.js
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: main content json
+      #     path: websitedata.json
       - run: node websiteDataDownloader.js
       - uses: actions/upload-artifact@v3
         with:
           name: entire-website-data
           path: data/
+      - run: node htmlToJson.js
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Parsed data json
+          path: parsed_data.json
