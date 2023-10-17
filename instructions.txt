@@ -1,0 +1,8 @@
+-- Fetch the website content
+-- Parse the website content to json
+-- Use the newton instance (GET /instances/{instance})
+-- Create asset types corresponding to the parsed json with keys as the asset type (POST /instances/{instance}/assettypes)
+-- Push the assets i.e. the JSON values to Newton by asset api (POST /instances/{instance}/assets). 
+    So every asset will belong to an asset type created above.
+-- Upload the media i.e. images, pdfs, videos to S3 bucket for access by the mobile app using (POST /instances/{instance}/s3Asset)
+
