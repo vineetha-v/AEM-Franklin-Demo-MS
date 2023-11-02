@@ -27,11 +27,11 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: Parsed data json
-          path: parsed_data.json
+          path: artifact/parsed_data.json
       - uses: shallwefootball/s3-upload-action@master
         id: S3
         with:
           aws_key_id: ${{secrets.AWS_KEY_ID}}
           aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: pwa-setup
-          source_dir: parsed_data.json
+          source_dir: artifact

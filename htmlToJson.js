@@ -16,7 +16,7 @@ readFile('data/index.html', 'utf8', (err, data) => {
             if (err) throw err;
             else {
                 console.log(Object.keys(dataFinal));
-                writeFileSync('parsed_data.json', JSON.stringify(dataFinal, null, 2), function (err) {
+                writeFileSync('artifact/parsed_data.json', JSON.stringify(dataFinal, null, 2), function (err) {
                     if (err) throw err;
                     console.log('successfully saved file')
                 });
