@@ -28,10 +28,17 @@ jobs:
         with:
           name: Parsed data json
           path: artifact/parsed_data.json
-      - uses: shallwefootball/s3-upload-action@master
-        id: S3
+      # - uses: shallwefootball/s3-upload-action@master
+      #   id: S3
+      #   with:
+      #     aws_key_id: ${{secrets.AWS_KEY_ID}}
+      #     aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      #     aws_bucket: pwa-setup
+      #     source_dir: artifact
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v3
         with:
-          aws_key_id: ${{secrets.AWS_KEY_ID}}
-          aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: pwa-setup
-          source_dir: artifact
+          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Deploy to S3
+        run: aws s3 sync artifact s3://pwa-setup
