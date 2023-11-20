@@ -28,12 +28,12 @@ jobs:
         with:
           name: Parsed data json
           path: artifact/parsed_data.json
-      - name: Upload parsed_data.json to Google Drive
-        uses: Jodebu/upload-to-drive@master
+      - name: Upload to gdrive
+        uses: adityak74/google-drive-upload-git-action@main
         with:
-          target: artifact/parsed_data.json
-          credentials: secrets.gsa_secret
-          folder: 1rfSVkXPJK_rBthPJoGJk_37T81KFZDdt
+          credentials: ${{ secrets.GSA_SECRET }}
+          filename: "artifact/parsed_data.json"
+          folderId: ${{ secrets.FOLDER_ID }}
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
