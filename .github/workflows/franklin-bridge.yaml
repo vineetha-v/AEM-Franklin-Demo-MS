@@ -28,13 +28,12 @@ jobs:
         with:
           name: Parsed data json
           path: artifact/parsed_data.json
-      # - uses: shallwefootball/s3-upload-action@master
-      #   id: S3
-      #   with:
-      #     aws_key_id: ${{secrets.AWS_KEY_ID}}
-      #     aws_secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-      #     aws_bucket: pwa-setup
-      #     source_dir: artifact
+      - name: Upload parsed_data.json to Google Drive
+        uses: Jodebu/upload-to-drive@master
+        with:
+          target: artifact/parsed_data.json
+          credentials: secrets.gsa_secret
+          folder: 1rfSVkXPJK_rBthPJoGJk_37T81KFZDdt
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
