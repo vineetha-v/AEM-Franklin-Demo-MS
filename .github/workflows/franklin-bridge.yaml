@@ -34,6 +34,7 @@ jobs:
           credentials: ${{ secrets.GSA_SECRET }}
           filename: "artifact/parsed_data.json"
           folderId: ${{ secrets.FOLDER_ID }}
+          overwrite: "true"
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
