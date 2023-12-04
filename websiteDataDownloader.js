@@ -1,7 +1,7 @@
 import Scraper from 'website-scraper'; // only as ESM, no CommonJS
 
 const options = {
-    urls: ['https://main--ossmobiledemo--vineetha-v.hlx.page/'],
+    urls: ['https://main--aem-franklin-demo-ms--vineetha-v.hlx.live/'],
     directory: './data'
 };
 
