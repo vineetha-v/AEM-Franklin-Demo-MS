@@ -42,4 +42,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
       - name: Deploy to S3
-        run: aws s3 sync artifact s3://pwa-setup
+        run: aws s3 sync artifact s3://pwa-setup --acl public-read
