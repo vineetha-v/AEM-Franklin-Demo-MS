@@ -1,4 +1,6 @@
 on:
+  issues:
+    types: opened
   push:
     branches:
       - demo-recording
