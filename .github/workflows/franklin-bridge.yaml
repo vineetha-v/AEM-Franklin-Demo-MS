@@ -11,6 +11,9 @@ jobs:
   franklin-bridge:
     runs-on: ubuntu-latest
     steps:
+      - name: Sleep for 120 seconds
+        run: sleep 120s
+        shell: bash
       - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
