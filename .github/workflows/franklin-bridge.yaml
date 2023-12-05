@@ -5,11 +5,9 @@ on:
   issues:
     types:
       - opened
-    branches:
-      - demo-recording
 jobs:
   franklin-bridge:
-    if: "contains(github.event.head_commit.message, 'Bridge')"
+    if: "contains(github.event.head_commit.message, 'Bridge') && (github.ref == 'refs/heads/demo-recording')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
